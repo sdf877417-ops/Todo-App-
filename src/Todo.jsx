@@ -33,7 +33,8 @@ function Todo() {
           ✨ Todo App
         </h1>
         <p className="text-center text-gray-500 mb-6">
-          Stay organized. Stay productive.
+          
+          furqans Todo Stay organized. Stay productive.
         </p>
 
         <form onSubmit={handleSubmit} className="flex gap-2 mb-6">
