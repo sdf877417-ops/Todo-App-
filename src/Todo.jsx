@@ -32,7 +32,7 @@ function Todo() {
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-2">
           ✨ Todo App
         </h1>
-        <p className="text-center text-gray-500 mb-6">
+        <p className="text-center text-gray-500 mb-6 p-5">
           
           furqans Todo Stay organized. Stay productive.
         </p>
