@@ -8,24 +8,21 @@ function Todo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newtodo) {
-      setTodos([...todos, { text: newtodo}]);
+      setTodos([...todos, { text: newtodo }]);
       console.log(`value of todos obj :`, todos);
       setNewtodo("");
-      console.log(`testing chage`)
+      console.log(`testing chage`);
     }
   };
 
-  //   const handleDelete = (index) => {
-  //     const newtodos = [...todos];
-  //     newtodos[index].completed = !newtodos[index].completed;
-  //     setTodos(newtodos);
-
-  //     console.log(`delet wale nowtodos :`, newtodos);
-  //   };
-  const handleDelete = (indexToDelete) => {
-    setTodos(todos.filter((_, index) => index !== indexToDelete));
-    console.log(`now value in setodo :`,todos)
-  };
+  // delting items in todos
+  // const handleDelete = (indexToDelete) => {
+  //   setTodos(todos.filter((_, index) => index !== indexToDelete));
+  //   console.log(`now value in setodo :`, todos);
+  // };
+  const handleDelete = (indexToDelete)=>{
+setTodos(todos.filter((elem,index)=> index!==indexToDelete ))
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center p-4">
@@ -34,7 +31,6 @@ function Todo() {
           ✨ Todo App
         </h1>
         <p className="text-center text-gray-500 mb-6 p-5">
-          
           furqans Todo Stay organized. Stay productive.
         </p>
 
@@ -60,12 +56,7 @@ function Todo() {
               key={index}
               className="flex items-center justify-between bg-gray-100 p-3 rounded-lg shadow-sm hover:shadow-md transition"
             >
-              <span
-                style={{
-                  textDecoration: elem.completed ? "line-through" : "none",
-                }}
-                className="text-lg font-medium text-gray-700 break-words"
-              >
+              <span className="text-lg font-medium text-gray-700 break-words">
                 {elem.text}
               </span>
 
