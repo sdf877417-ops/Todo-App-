@@ -7,7 +7,7 @@ function App() {
       <Todo/>
       
 
-    </div>
+    </div>  
   );
 }
 

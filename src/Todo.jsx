@@ -11,6 +11,7 @@ function Todo() {
       setTodos([...todos, { text: newtodo}]);
       console.log(`value of todos obj :`, todos);
       setNewtodo("");
+      console.log(`testing chage`)
     }
   };
 
