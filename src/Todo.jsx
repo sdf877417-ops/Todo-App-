@@ -16,10 +16,6 @@ function Todo() {
   };
 
   // delting items in todos
-  // const handleDelete = (indexToDelete) => {
-  //   setTodos(todos.filter((_, index) => index !== indexToDelete));
-  //   console.log(`now value in setodo :`, todos);
-  // };
   const handleDelete = (indexToDelete)=>{
 setTodos(todos.filter((elem,index)=> index!==indexToDelete ))
   }
