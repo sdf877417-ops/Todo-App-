@@ -4,21 +4,44 @@ import { useState } from "react";
 function Todo() {
   const [newtodo, setNewtodo] = useState("");
   const [todos, setTodos] = useState([]);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const id = Date.now();
+
+    if (isUpdating !== false) {
+      setTodos((prev) =>
+        prev.map((elem) =>
+          elem.id === isUpdating ? { ...elem, text: newtodo } : elem,
+        ),
+      );
+
+      setNewtodo("");
+      setIsUpdating(false);
+
+      return;
+    }
+
     if (newtodo) {
-      setTodos([...todos, { text: newtodo }]);
+      setTodos([...todos, { id: id, text: newtodo }]);
       console.log(`value of todos obj :`, todos);
+
       setNewtodo("");
       console.log(`testing chage`);
     }
   };
 
   // delting items in todos
-  const handleDelete = (indexToDelete)=>{
-setTodos(todos.filter((elem,index)=> index!==indexToDelete ))
-  }
+  const handleDelete = (indexToDelete) => {
+    setTodos(todos.filter((elem, index) => index !== indexToDelete));
+  };
+
+  const handleUpdate = (updateData) => {
+    console.log("udpated data is :->", updateData);
+    setNewtodo(updateData.text);
+    setIsUpdating(updateData.id);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center p-4">
@@ -60,7 +83,14 @@ setTodos(todos.filter((elem,index)=> index!==indexToDelete ))
                 className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg transition duration-300"
                 onClick={() => handleDelete(index)}
               >
-                Done
+                Delete
+              </button>
+
+              <button
+                className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg transition duration-300"
+                onClick={() => handleUpdate(elem)}
+              >
+                update
               </button>
             </div>
           ))}
