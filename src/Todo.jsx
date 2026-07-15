@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 function Todo() {
+  const [todos, setTodos] = useState(() => {
+    const savedTodo = localStorage.getItem("todos");
+
+    return savedTodo ? JSON.parse(savedTodo) : [];
+  });
+
   const [newtodo, setNewtodo] = useState("");
-  const [todos, setTodos] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
 
   const handleSubmit = (e) => {
@@ -42,6 +47,10 @@ function Todo() {
     setNewtodo(updateData.text);
     setIsUpdating(updateData.id);
   };
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center p-4">
